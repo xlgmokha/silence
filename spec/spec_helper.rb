@@ -1,3 +1,7 @@
+$LOAD_PATH.unshift('lib')
+Dir["lib/*.rb"].each { |file| require File.basename(file) }
+
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
