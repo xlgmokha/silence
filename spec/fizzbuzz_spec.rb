@@ -5,25 +5,34 @@
  numbers which are multiples of both three and five
  print "FizzBuzz".
 =end
-
-def fizz_buzz(n)
+class FizzBuzz
+  def run(input)
+  end
 end
 
 describe "FizzBuzz" do
-  it "returns each number" do
-    [1, 2, 4, 7, 8].each do |n|
-      expect(fizz_buzz(n)).to eql(n)
+  subject { FizzBuzz.new }
+
+  context "when the input is a multiple of 3" do
+    it "returns 'Fizz'" do
+      (1..10).each do |n|
+        result = subject.run(n*3)
+        expect(result).to include("Fizz")
+      end
     end
   end
 
-  xit "returns 'Fizz'" do
-    expect(fizz_buzz(3)).to eql("Fizz")
+  context "when the input is a multiple of 5" do
+    xit "returns 'Buzz'" do
+      (1..10).each do |n|
+        result = subject.run(n*5)
+        expect(result).to include("Buzz")
+      end
+    end
   end
 
-  xit "returns 'Buzz'" do
-    expect(fizz_buzz(5)).to eql("Buzz")
-  end
-
-  xit "returns 'FizzBuzz'" do
+  context "when the input is not a multiple of 3 or 5" do
+    xit 'returns the input' do
+    end
   end
 end
