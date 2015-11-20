@@ -7,25 +7,48 @@
     <title>Hello World</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      $(function(){
+        $('form').submit(function(event){
+          event.preventDefault();
+        });
+      });
+    </script>
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
+          <ul id="notifications" class="hide"> </ul>
           <form class="form-signin" action="#">
-            <h2 class="form-signin-heading">Login</h2>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <h2 class="form-signin-heading">Hello World</h2>
+            <label for="inputEmail">Email address</label>
+            <input type="email" id="inputEmail" class="form-control">
+            <label for="inputPassword">Password</label>
+            <input type="password" id="inputPassword" class="form-control">
             <div class="checkbox">
               <label>
                 <input type="checkbox" value="remember-me"> Remember me
               </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
           </form>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <h3>Validation Rules</h3>
+          <ul>
+            <li>Validate email address</li>
+            <li>Password must be a minimum of 10 characters</li>
+            <li>Disable 'Login' Button until both email and password is entered.</li>
+            <li>Autofocus on email input</li>
+            <li>Add an 'Email' and 'Password' placeholder.</li>
+          </ul>
         </div>
         <div class="col-md-4"></div>
       </div>
