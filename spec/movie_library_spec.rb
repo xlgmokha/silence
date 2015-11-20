@@ -20,13 +20,13 @@ describe MovieLibrary do
   end
 
   context "when adding a movie to the library" do
-    xit "should increase the total number of movies in the library" do
+    xit "increases the total number of movies in the library" do
       library.add(shawshank_redemption)
       library.add(chasing_amy)
       expect(library.total_count).to eql(2)
     end
 
-    xit "should not allow duplicate movies into the library" do
+    xit "does not allow duplicate movies into the library" do
       library.add(man_on_fire)
       library.add(man_on_fire)
       expect(library.total_count).to eql( 1)
@@ -46,7 +46,7 @@ describe MovieLibrary do
 
     xit 'Can find all pixar movies' do
       results = library.find_all_movies_by_pixar
-      results.count.should == 4
+      expect(results.count).to eql(4)
       expect(results).to include(toy_story)
       expect(results).to include(up)
       expect(results).to include(cars)
@@ -55,7 +55,7 @@ describe MovieLibrary do
 
     xit 'Can find all movies published by pixar or disney' do
       results = library.find_all_movies_by_pixar_or_disney
-      results.count.should == 7
+      expect(results.count).to eql(7)
       expect(results).to include(toy_story)
       expect(results).to include(up)
       expect(results).to include(cars)
@@ -67,7 +67,7 @@ describe MovieLibrary do
 
     xit 'Can find all movies not published by pixar' do
       results = library.find_all_movies_not_published_by_pixar
-      results.length.should == 6
+      expect(results.length).to eql(6)
       expect(results).to include(fantasia)
       expect(results).to include(dumbo)
       expect(results).to include(pinocchio)
@@ -78,14 +78,14 @@ describe MovieLibrary do
 
     xit 'Can find all movies released after 2004' do
       results = library.find_all_movies_published_after_2004
-      results.length.should == 2
+      expect(results.length).to eql(2)
       expect(results).to include(up)
       expect(results).to include(cars)
     end
 
     xit 'Can find all movies released between 1982 and 2003 - Inclusive' do
       results = library.find_all_movies_between_1982_and_2003
-      results.length.should == 4
+      expect(results.length).to eql(4)
       expect(results).to include(shawshank_redemption)
       expect(results).to include(chasing_amy)
       expect(results).to include(toy_story)
@@ -131,13 +131,13 @@ describe MovieLibrary do
   end
 
   context "equality" do
-    xit "should not equal" do
+    xit "is not equal" do
       blah = create_movie(title: 'blah')
       huh = create_movie(title: 'huh')
       expect(blah).to eql( huh )
     end
 
-    xit "should equal" do
+    xit "is equal" do
       huh1 = create_movie(title: 'huh')
       huh2 = create_movie(title: 'huh')
       expect(huh1).to eql( huh2 )
