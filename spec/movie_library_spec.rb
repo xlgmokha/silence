@@ -3,16 +3,13 @@ describe MovieLibrary do
   let(:shawshank_redemption) { create_movie(title: "The Shawshank Redemption", studio: Studio::CastleRock, year_published: 1994) }
   let(:chasing_amy) { create_movie(title: "Chasing Amy", studio: Studio::MiramaxFilms, year_published: 1997) }
   let(:man_on_fire) { create_movie(title: "Man on Fire", studio: Studio::RegencyEnterprises, year_published: 2004) }
-
   let(:toy_story) { create_movie(title: "Toy Story", studio: Studio::Pixar, year_published: 1995) }
   let(:up) { create_movie(title: "Up", studio: Studio::Pixar, year_published: 2006) }
   let(:cars) { create_movie(title: "Cars", studio: Studio::Pixar, year_published: 2009) }
   let(:monsters_inc) { create_movie(title: "Monsters Inc.", studio: Studio::Pixar, year_published: 2001) }
-
   let(:fantasia) { create_movie(title: "Fantasia", studio: Studio::Disney, year_published: 1940) }
   let(:dumbo) { create_movie(title: "Dumbo", studio: Studio::Disney, year_published: 1941) }
   let(:pinocchio) { create_movie(title: "Pinocchio", studio: Studio::Disney, year_published: 1940) }
-
   let(:all_movies) { [shawshank_redemption, chasing_amy, man_on_fire, toy_story, up, cars, monsters_inc, fantasia, dumbo, pinocchio] }
 
   def create_movie(details)
