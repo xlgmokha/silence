@@ -18,13 +18,13 @@ CREATE TABLE studios (
 -- 5	Disney
 -- \.
 
--- Can find all pixar movies
--- Can find all movies published by pixar or disney
--- Can find all movies not published by pixar
--- Can find all movies released after 2004
--- Can find all movies released between 1982 and 2003 - Inclusive
--- Sorts all movies by descending title
--- Sorts all movies by ascending title
--- Sorts all movies by descending release date
--- Sorts all movies by ascending release date
--- Sorts all movies by preferred studios and release date ascending
+-- find all pixar movies
+-- find all movies published by pixar or disney
+-- find all movies not published by pixar
+-- find all movies released after 2004
+-- find all movies released between 1982 and 2003 - Inclusive
+-- sort all movies by descending title
+-- sort all movies by ascending title
+-- sort all movies by descending release date
+-- sort all movies by ascending release date
+-- sort all movies by preferred studios and release date ascending
