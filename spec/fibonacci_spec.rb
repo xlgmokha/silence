@@ -9,7 +9,7 @@
 class Fibonacci
 end
 
-describe "problem two" do
+describe "fibonacci" do
   subject { Fibonacci.new }
 
   xit 'returns the sum of the even valued terms' do
