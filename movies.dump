@@ -1,0 +1,284 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: movies; Type: TABLE; Schema: public; Owner: vagrant; Tablespace: 
+--
+
+CREATE TABLE movies (
+    id integer NOT NULL,
+    title character varying(255),
+    studio_id integer,
+    year integer
+);
+
+
+ALTER TABLE movies OWNER TO vagrant;
+
+--
+-- Name: movies_id_seq; Type: SEQUENCE; Schema: public; Owner: vagrant
+--
+
+CREATE SEQUENCE movies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE movies_id_seq OWNER TO vagrant;
+
+--
+-- Name: movies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vagrant
+--
+
+ALTER SEQUENCE movies_id_seq OWNED BY movies.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: vagrant; Tablespace: 
+--
+
+CREATE TABLE schema_migrations (
+    version character varying(255) NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO vagrant;
+
+--
+-- Name: studios; Type: TABLE; Schema: public; Owner: vagrant; Tablespace: 
+--
+
+CREATE TABLE studios (
+    id integer NOT NULL,
+    title character varying(255)
+);
+
+
+ALTER TABLE studios OWNER TO vagrant;
+
+--
+-- Name: studios_id_seq; Type: SEQUENCE; Schema: public; Owner: vagrant
+--
+
+CREATE SEQUENCE studios_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE studios_id_seq OWNER TO vagrant;
+
+--
+-- Name: studios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vagrant
+--
+
+ALTER SEQUENCE studios_id_seq OWNED BY studios.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: vagrant; Tablespace: 
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    password_digest character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE users OWNER TO vagrant;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: vagrant
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO vagrant;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vagrant
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY movies ALTER COLUMN id SET DEFAULT nextval('movies_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY studios ALTER COLUMN id SET DEFAULT nextval('studios_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Data for Name: movies; Type: TABLE DATA; Schema: public; Owner: vagrant
+--
+
+COPY movies (id, title, studio_id, year) FROM stdin;
+1	The Shawshank Redemption	1	1994
+2	Chasing Amy	2	1997
+3	Man on Fire	3	2004
+4	Toy Story	4	1995
+5	Up	4	2006
+6	Cars	4	2009
+7	Monsters Inc.	4	2001
+8	Fantasia	5	1940
+9	Dumbo	5	1941
+10	Pinocchio	5	1940
+\.
+
+
+--
+-- Name: movies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
+--
+
+SELECT pg_catalog.setval('movies_id_seq', 10, true);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: vagrant
+--
+
+COPY schema_migrations (version) FROM stdin;
+20140208162237
+20131129024058
+20131129025934
+20140208154456
+20140208160437
+\.
+
+
+--
+-- Data for Name: studios; Type: TABLE DATA; Schema: public; Owner: vagrant
+--
+
+COPY studios (id, title) FROM stdin;
+1	Castle Rock
+2	MiramaxFilms
+3	RegencyEnterprises
+4	Pixar
+5	Disney
+\.
+
+
+--
+-- Name: studios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
+--
+
+SELECT pg_catalog.setval('studios_id_seq', 1, false);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: vagrant
+--
+
+COPY users (id, password_digest, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, false);
+
+
+--
+-- Name: movies_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant; Tablespace: 
+--
+
+ALTER TABLE ONLY movies
+    ADD CONSTRAINT movies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: studios_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant; Tablespace: 
+--
+
+ALTER TABLE ONLY studios
+    ADD CONSTRAINT studios_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: vagrant; Tablespace: 
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
