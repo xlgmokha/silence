@@ -20,6 +20,7 @@ CREATE TABLE studios (
 
 -- find all pixar movies
 -- find all studios that don't have a movie.
+-- find all studios that did not publish a movie in 2006
 -- find all movies published by pixar or disney
 -- find all movies not published by pixar
 -- find all movies released after 2004
