@@ -5,7 +5,8 @@ package [
   'curl',
   'git-core',
   'libsqlite3-dev',
-  'sqlite3'
+  'mongodb',
+  'sqlite3',
 ]
 
 bash "install postgres" do
